@@ -1,0 +1,39 @@
+﻿@using WebApplication1.Models.Entitiy @*Yüklediğmiz modele ulaşmak için yazıyoruz*@
+@model List <TBLURUNLER>
+@*cekmek-istediğimiz-tablo*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th> ÜRÜN ID </th>
+        <th> ÜRÜN ADI </th>
+        <th> MARKASI: </th>
+        <th> KATEGORİ </th>
+        <th> FİYAT </th>
+        <th> STOK </th>
+        <th> SİL </th>
+        <th> GÜNCELLE</th>
+    </tr>
+
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+            <tr>
+                <th>@ktgr.URUNID</th>
+                <th>@ktgr.URUNAD</th>
+                <th>@ktgr.MARKA</th>
+                <th>@ktgr.TBLKATEGORILER.KATEGORIAD</th>
+                <th>@ktgr.FIYAT</th>
+                <th>@ktgr.STOK</th>
+                <td>  <a href="/Urun/Sil/@ktgr.URUNID" class="btn btn-danger">SİL</a></td>
+                <td>  <a href="/Urun/GUNCELLE/@ktgr.URUNID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Urun/YeniUrun/" class="btn btn-primary">Yeni Ürün Ekle</a>

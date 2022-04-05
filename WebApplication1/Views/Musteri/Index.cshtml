@@ -1,0 +1,35 @@
+﻿@using WebApplication1.Models.Entitiy @*Yüklediğmiz modele ulaşmak için yazıyoruz*@
+@model List<TBLMUSTERILER>
+@*cekmek-istediğimiz-tablo*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th> MÜŞTERİ ID </th>
+        <th> MÜŞTERİ ADI </th>
+        <th> MÜŞTERİ SOYADI </th>
+        <th> SİL </th>
+        <th> GÜNCELLE</th>
+    </tr>
+
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+        <tr>
+            <th>  @ktgr.MUSTERID</th>
+            <td>  @ktgr.MUSTERIAD </td>
+            <td>  @ktgr.MUSTERISOYAD </td>
+            <td>  <a href="/Musteri/Sil/@ktgr.MUSTERID" class="btn btn-danger">SİL</a></td>
+            <td>  <a href="/Musteri/MusteriGetir/@ktgr.MUSTERID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/Musteri/YeniMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a>
+
+
